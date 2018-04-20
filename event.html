@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>发布订阅模式</title>
+</head>
+<body>
+  <script type="text/javascript" src="./eventEmitter.js">
+    </script>
+    <script type="text/javascript">
+      var eventEmitter = new EventEmitter();
+      function eat(data) {
+        console.log(`吃 ${data}`);
+      }
+      eventEmitter.addListener("肉类", eat);
+      eventEmitter.addListener("蔬菜类", eat);
+      eventEmitter.addListener("豆类", eat);
+      eventEmitter.emit("肉类", "牛肉","猪肉");
+      eventEmitter.emit("蔬菜类", "西红柿","茄子");
+      eventEmitter.emit("豆类", "大豆","花生豆");
+      eventEmitter.removeListener("豆类", eat);
+      eventEmitter.emit("豆类", "黄豆");
+    </script>  
+</body>
+</html>
